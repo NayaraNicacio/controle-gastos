@@ -62,6 +62,14 @@
       "valor": 500.0,
       "tipo": "saída",
       "data": "2024-11-08"
+    },
+    {
+      "id": 9,
+      "descricao": "Pizza",
+      "categoria": "Alimentação",
+      "valor": 80.0,
+      "tipo": "saída",
+      "data": "2024-11-21"
     }
   ]
   
