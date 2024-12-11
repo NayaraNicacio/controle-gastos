@@ -33,7 +33,9 @@ Desenvolver uma plataforma eficiente para gestão de finanças pessoais com uplo
   - **Google Cloud Storage** para armazenar imagens enviadas
   - **Firestore** para banco de dados de transações
 
-## Estrutura de Arquivos
+##
+ Estrutura de Arquivos
+``` 
 .
 ├── frontend/
 │   ├── src/
@@ -52,6 +54,7 @@ Desenvolver uma plataforma eficiente para gestão de finanças pessoais com uplo
 │   │   └── app.js
 │   ├── package.json
 └── README.md
+```
 
 
 ## Instalação e Configuração
