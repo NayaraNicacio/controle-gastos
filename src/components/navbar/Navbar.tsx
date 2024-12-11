@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <StyledNavbar>
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/criar-despesas">Criar Despesas</NavLink>
+      <NavLink to="/criar-despesas">Minhas Despesas</NavLink>
       <NavLink to="/dashboard">Dashboard</NavLink>
     </StyledNavbar>
   );
