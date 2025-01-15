@@ -90,10 +90,10 @@ Estrutura de Arquivos
 
 ## Critérios de Aceite
 
-1. Upload de Imagem da Nota Fiscal
-   Dado que a usuária está autenticada e acessa a funcionalidade de upload,
-   Quando a usuária faz o upload de uma imagem válida da nota fiscal,
-   Então o sistema deve exibir uma mensagem de confirmação de envio e iniciar o processamento OCR para extrair os dados.
+1. Autenticação e Autorização de Usuário
+   Dado que uma usuária tenta acessar o sistema,
+   Quando ela insere suas credenciais válidas e faz login,
+   Então o sistema deve autenticar a usuária e redirecioná-la ao seu dashboard personalizado, garantindo o acesso apenas a suas transações.
 
 2. Processamento OCR (Reconhecimento de Texto)
    Dado que o upload de uma imagem foi concluído,
@@ -110,10 +110,10 @@ Estrutura de Arquivos
    Quando a usuária acessa a tela de histórico de transações,
    Então o sistema deve exibir uma lista de todas as transações, incluindo a data, o valor e a categoria de cada uma.
 
-5. Autenticação e Autorização de Usuário
-   Dado que uma usuária tenta acessar o sistema,
-   Quando ela insere suas credenciais válidas e faz login,
-   Então o sistema deve autenticar a usuária e redirecioná-la ao seu dashboard personalizado, garantindo o acesso apenas a suas transações.
+5. Upload de Imagem da Nota Fiscal
+   Dado que a usuária está autenticada e acessa a funcionalidade de upload,
+   Quando a usuária faz o upload de uma imagem válida da nota fiscal,
+   Então o sistema deve exibir uma mensagem de confirmação de envio e iniciar o processamento OCR para extrair os dados.
 
 6. Validação de Upload de Imagem
    Dado que a usuária tenta fazer upload de um arquivo,
