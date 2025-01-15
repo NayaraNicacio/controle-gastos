@@ -4,16 +4,19 @@ import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { auth } from "../../services/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import * as S from "./styles";
+import { FiLogOut } from "react-icons/fi";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
 
-  useEffect(() => {
-    if (user && window.location.pathname === "/") {
-      navigate("/dashboard");
+  const getShortenedName = (fullName: string | null): string => {
+    if (!fullName) {
+      return "";
     }
-  }, [user, navigate]);
+    const words = fullName.split(" ");
+    return words.slice(0, 1).join(" ");
+  };
 
   const signWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
@@ -31,23 +34,22 @@ const Navbar = () => {
 
   return (
     <S.StyledNavbar>
-      {!user && <NavLink to="/">Home</NavLink>}
-
+      {user && <NavLink to="/">Home</NavLink>}
       {user && <NavLink to="/criar-despesas">Criar Despesas</NavLink>}
-
       {user && <NavLink to="/dashboard">Dashboard</NavLink>}
 
-      {/* Exibe o botão de login ou a saudação com botão de sair */}
       {user ? (
         <S.ProfileContainer>
-          <S.UserInfo>
-            <S.UserImage src={user.photoURL} alt="Foto de perfil" />
-            <p>Olá, {user.displayName}!</p>
-          </S.UserInfo>
-          <S.Button onClick={handleSignOut}>Sair</S.Button>
+          <S.UserImage src={user.photoURL} alt="Foto de perfil" />
+          {/* {showUserName && <p>Olá, {user.displayName}!</p>} */}
+          <S.UserName>Olá, {getShortenedName(user.displayName)}!</S.UserName>
+          <S.LogoutButton onClick={handleSignOut}>
+            <FiLogOut />
+            Sair
+          </S.LogoutButton>
         </S.ProfileContainer>
       ) : (
-        <S.Button onClick={signWithGoogle}>Login</S.Button>
+        <S.LogintButton onClick={signWithGoogle}>Login</S.LogintButton>
       )}
     </S.StyledNavbar>
   );

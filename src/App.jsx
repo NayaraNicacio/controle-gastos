@@ -20,7 +20,7 @@ const App = () => {
           path="/criar-despesas"
           element={user ? <CriarDespesas /> : <Home />}
         />
-        <Route path="/dashboard" element={user ? <Dashboard2 /> : <Home />} />
+        <Route path="/dashboard" element={user ? <Dashboard /> : <Home />} />
       </Routes>
       <Footer />
     </BrowserRouter>

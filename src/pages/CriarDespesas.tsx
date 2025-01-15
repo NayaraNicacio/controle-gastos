@@ -3,6 +3,7 @@ import axios from "axios";
 import * as S from "./styles";
 import { auth } from "../services/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import http from "../http";
 
 const CriarDespesas = () => {
   const [user] = useAuthState(auth); // Hook do Firebase pa
@@ -38,15 +39,11 @@ const CriarDespesas = () => {
     setIsLoading(true); // Ativa o estado de carregamento
 
     try {
-      const response = await axios.post(
-        "https://back-aprofunda-chat-despesa.onrender.com/despesas",
-        despesaData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await http.post("despesas", despesaData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       console.log("Resposta da API:", response.data);
 

@@ -4,6 +4,8 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../services/firebase";
 import axios from "axios";
+import { IoIosCloseCircle } from "react-icons/io";
+import http from "../../http";
 
 const ChatGemini = ({ despesas }: { despesas: any[] }) => {
   const [user] = useAuthState(auth);
@@ -27,13 +29,10 @@ const ChatGemini = ({ despesas }: { despesas: any[] }) => {
   const createSession = async () => {
     try {
       // Envia o uid e a mensagem inicial
-      const response = await axios.post(
-        "https://back-aprofunda-chat-despesa.onrender.com/chat",
-        {
-          uid: user?.uid,
-          message: "Iniciando conversa", // Mensagem inicial
-        }
-      );
+      const response = await http.post("/chat", {
+        uid: user?.uid,
+        message: "Iniciando conversa",
+      });
 
       // Armazenar as mensagens retornadas
       setMessages([
@@ -60,13 +59,10 @@ const ChatGemini = ({ despesas }: { despesas: any[] }) => {
 
     try {
       // Envia apenas o UID e a mensagem do usuário
-      const response = await axios.post(
-        "https://back-aprofunda-chat-despesa.onrender.com/chat",
-        {
-          uid: user?.uid,
-          message: input, // Mensagem do usuário
-        }
-      );
+      const response = await http.post("chat", {
+        uid: user?.uid,
+        message: input, // Mensagem do usuário
+      });
 
       // Adiciona a resposta do bot ao estado de mensagens
       const botMessage =
@@ -92,7 +88,8 @@ const ChatGemini = ({ despesas }: { despesas: any[] }) => {
         <S.ChatContainer>
           <S.ChatHeader>
             <span>Conselheiro Financeiro</span>
-            <button onClick={toggleChat}>X</button>
+
+            <S.ChatCloseIcon onClick={toggleChat} />
           </S.ChatHeader>
 
           <S.ChatBody>
