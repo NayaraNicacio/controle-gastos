@@ -13,6 +13,7 @@
   "dependencies": {
     "@genkit-ai/googleai": "^0.9.12",
     "axios": "^1.7.9",
+    "controle-gastos": "file:",
     "firebase": "^11.1.0",
     "genkit": "^0.9.12",
     "react": "^18.3.1",
