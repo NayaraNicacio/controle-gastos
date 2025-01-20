@@ -67,6 +67,10 @@ const Dashboard = () => {
           <p>Saldo</p>
           <p>R$ {saldo.toFixed(2)}</p>
         </S.Card>
+        <S.Card bgColor="#ffc3333">
+        <h1>Cotação do Dólar</h1>
+        <p id="dollar-rate">Carregando...</p>
+        </S.Card>
       </S.CardsContainer>
 
       {/* Tabela com os dados das despesas */}
