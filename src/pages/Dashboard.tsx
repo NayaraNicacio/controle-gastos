@@ -84,9 +84,9 @@ const Dashboard = () => {
           <p>R$ {saldo.toFixed(2)}</p>
         </S.Card>
 
-        <S.Card bgColor="#ffc3333">
+        <S.Card bgColor="#ffc333">
         <h1>Dólar Hoje</h1>
-         <p>{dollarRate ? `R$ ${dollarRate.toFixed(2)}` : "Carregando..."}</p>
+        <p>{dollarRate ? `R$ ${dollarRate.toFixed(2)}` : "Carregando..."}</p>
         </S.Card> 
       </S.CardsContainer>
 
