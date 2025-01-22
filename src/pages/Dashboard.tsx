@@ -20,8 +20,11 @@ type Despesa = {
 const Dashboard = () => {
   const [despesas, setDespesas] = useState([] as Despesa[]);
   const [user] = useAuthState(auth); 
+
   const [dollarRate, setDollarRate] = useState<number | null>(null);
+
   const dollarRateService = new CotacaoDollar();
+
 
   useEffect(() => {
     const fetchDollarRate = async () => {
@@ -86,7 +89,7 @@ const Dashboard = () => {
 
         <S.Card bgColor="#ffc333">
         <h1>Dólar Hoje</h1>
-        <p>{dollarRate ? `R$ ${dollarRate.toFixed(2)}` : "Carregando..."}</p>
+        <p>{dollarRate !== null ? `R$ ${dollarRate.toFixed(2)}` : "Carregando..."}</p>
         </S.Card> 
       </S.CardsContainer>
 
