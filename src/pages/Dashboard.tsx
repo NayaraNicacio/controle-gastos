@@ -25,12 +25,20 @@ const Dashboard = () => {
 
   const dollarRateService = new CotacaoDollar();
 
+  const [currentDateTime, setCurrentDateTime] = useState<string>("");
+
 
   useEffect(() => {
     const fetchDollarRate = async () => {
       try {
         const rate = await dollarRateService.getDollarRate();
         setDollarRate(rate);
+        const now = new Date();
+        const formattedDateTime = now.toLocaleString("pt-BR", {
+          dateStyle: "short",
+          timeStyle: "short",
+        });
+        setCurrentDateTime(formattedDateTime);
       } catch (error) {
         console.error(error);
       }
@@ -90,6 +98,7 @@ const Dashboard = () => {
         <S.Card bgColor="#ffc333">
         <h1>Dólar Hoje</h1>
         <p>{dollarRate !== null ? `R$ ${dollarRate.toFixed(2)}` : "Carregando..."}</p>
+        <small>{currentDateTime}</small>
         </S.Card> 
       </S.CardsContainer>
 
