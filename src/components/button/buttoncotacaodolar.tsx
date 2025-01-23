@@ -1,5 +1,5 @@
 import { CotacaoDollar } from "../../services/CotacaoDollar";
-import { getMostTradedStocks } from "../../services/B3Service";
+import { getMostTradedStocks } from "../../services/B3Services";
 import * as S from "./button-styles";
 import { useEffect, useState } from "react";
 
@@ -43,7 +43,7 @@ const ButtonDollar = () => {
   }, []);
 
   return (
-    <S.ButtonDollar bgColor="#9370DB">
+    <S.ButtonCotacao bgColor="#9370DB">
       <div style={{ textAlign: "center", color: "#FFF" }}>
         {currentDateTime && dollarRate !== null && (
           <table style={{ width: "100%", color: "#FFF", borderCollapse: "collapse" }}>
@@ -80,7 +80,7 @@ const ButtonDollar = () => {
           </table>
         )}
       </div>
-    </S.ButtonDollar>
+    </S.ButtonCotacao>
   );
 };
 
