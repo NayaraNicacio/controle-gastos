@@ -43,40 +43,28 @@ const ButtonDollar = () => {
   }, []);
 
   return (
-    <S.ButtonCotacao bgColor="#9370DB">
-      {currentDateTime && <p><strong>{currentDateTime}</strong></p>}
-      <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "10px" }}>
-        <thead>
-          <tr style={{ backgroundColor: "#D8BFD8", color: "#333" }}>
-            <th style={{ padding: "10px", border: "1px solid #ccc" }}>Informação</th>
-            <th style={{ padding: "10px", border: "1px solid #ccc" }}>Detalhes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style={{ backgroundColor: "#F3E5F5" }}>
-            <td colSpan={2} style={{ textAlign: "center", padding: "10px", border: "1px solid #ccc" }}>
-              {dollarRate !== null ? `Dólar: R$ ${dollarRate.toFixed(2)}` : "Carregando cotação do dólar..."}
-            </td>
-          </tr>
-          {mostTradedStocks.length > 0 ? (
-            mostTradedStocks.map((stock, index) => (
-              <tr key={index} style={{ backgroundColor: index % 2 === 0 ? "#EDE7F6" : "#FFF" }}>
-                <td style={{ padding: "10px", border: "1px solid #ccc" }}>{stock.name}</td>
-                <td style={{ padding: "10px", border: "1px solid #ccc" }}>{stock.volume.toLocaleString()} negociações</td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan={2} style={{ textAlign: "center", padding: "10px", border: "1px solid #ccc" }}>
-                Carregando ações mais negociadas...
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </S.ButtonCotacao>
+    <S.ButtonDollar bgColor="#9370DB">
+      <div style={{ textAlign: "center", color: "#FFF" }}>
+        <p><strong>{currentDateTime}</strong></p>
+        <p>
+          {dollarRate !== null
+            ? `Dólar: R$ ${dollarRate.toFixed(2)}`
+            : "Carregando cotação do dólar..."}
+        </p>
+        {mostTradedStocks.length > 0 ? (
+          mostTradedStocks.map((stock, index) => (
+            <p key={index}>
+              {stock.name}: {stock.volume.toLocaleString()} negociações
+            </p>
+          ))
+        ) : (
+          <p>Carregando ações...</p>
+        )}
+      </div>
+    </S.ButtonDollar>
   );
 };
 
 export default ButtonDollar;
+
 
