@@ -43,7 +43,7 @@ const ButtonDollar = () => {
   }, []);
 
   return (
-    <S.ButtonCotacao bgColor="#9370DB">
+    <S.ButtonCotacao style={{ backgroundColor: "rgba(147, 112, 219, 0.5)", border: "none" }}>
       <div style={{ textAlign: "center", color: "#FFF" }}>
         {currentDateTime && dollarRate !== null && (
           <table style={{ width: "100%", color: "#FFF", borderCollapse: "collapse" }}>
