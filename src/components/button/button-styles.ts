@@ -10,7 +10,7 @@ export const ButtonCotacao = styled.button`
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease;
-
+    
   &:hover {
     background-color: rgba(147, 112, 219, 0.7);
   }

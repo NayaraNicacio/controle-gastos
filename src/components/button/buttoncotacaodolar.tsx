@@ -43,35 +43,35 @@ const ButtonDollar = () => {
   }, []);
 
   return (
-    <S.ButtonCotacao style={{ backgroundColor: "rgba(147, 112, 219, 0.5)", border: "none" }}>
+    <S.ButtonCotacao style={{ width: "150px", height: "40px", fontSize: "14px" }}>
       <div style={{ textAlign: "center", color: "#FFF" }}>
         {currentDateTime && dollarRate !== null && (
           <table style={{ width: "100%", color: "#FFF", borderCollapse: "collapse" }}>
             <thead>
               <tr>
-                <th style={{ borderBottom: "2px solid #FFF", padding: "8px" }}>Dólar: R$ {dollarRate.toFixed(2)}</th>
-                <th style={{ borderBottom: "2px solid #FFF", padding: "8px" }}>
+                <th style={{ borderBottom: "2px solid #FFF", padding: "4px" }}>Dólar: R$ {dollarRate.toFixed(2)}</th>
+                <th style={{ borderBottom: "2px solid #FFF", padding: "4px" }}>
                   {currentDateTime}
                 </th>
               </tr>
               <tr>
-                <th style={{ borderBottom: "2px solid #FFF", padding: "8px" }}>Ação</th>
-                <th style={{ borderBottom: "2px solid #FFF", padding: "8px" }}>Volume Negociado</th>
+                <th style={{ borderBottom: "2px solid #FFF", padding: "4px" }}>Ação</th>
+                <th style={{ borderBottom: "2px solid #FFF", padding: "4px" }}>Volume Negociado</th>
               </tr>
             </thead>
             <tbody>
               {mostTradedStocks.length > 0 ? (
                 mostTradedStocks.map((stock, index) => (
                   <tr key={index}>
-                    <td style={{ padding: "8px", textAlign: "left" }}>{stock.name}</td>
-                    <td style={{ padding: "8px", textAlign: "right" }}>
+                    <td style={{ padding: "4px", textAlign: "left" }}>{stock.name}</td>
+                    <td style={{ padding: "4px", textAlign: "right" }}>
                       {stock.volume.toLocaleString()}
                     </td>
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan={2} style={{ padding: "8px", textAlign: "center" }}>
+                  <td colSpan={2} style={{ padding: "4px", textAlign: "center" }}>
                     Carregando ações...
                   </td>
                 </tr>
