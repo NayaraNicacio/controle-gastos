@@ -1,21 +1,17 @@
 import styled from "styled-components";
 
-export const ButtonCotacao = styled.button<{ bgColor: string }>`
-  background-color: ${(props) => props.bgColor};
-  color: white;
+export const ButtonCotacao = styled.button`
+  background-color: rgba(147, 112, 219, 0.5);
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
 
-  p {
-    margin: 0;
-  }
-
-  small {
-    display: block;
-    margin-top: 5px;
-    font-size: 12px;
+  &:hover {
+    background-color: rgba(147, 112, 219, 0.7);
   }
 `;
