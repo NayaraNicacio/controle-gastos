@@ -1,5 +1,5 @@
 import { CotacaoDollar } from "../../services/CotacaoDollar";
-import { getMostTradedStocks } from "../../services/B3Service";
+import { getMostTradedStocks } from "../../services/B3Services";
 import * as S from "./button-styles";
 import { useEffect, useState } from "react";
 import { ButtonCotacao } from './button-styles';
