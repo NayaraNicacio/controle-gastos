@@ -44,24 +44,39 @@ const ButtonDollar = () => {
 
   return (
     <S.ButtonCotacao bgColor="#9370DB">
-      <p>{dollarRate !== null ? `Dólar: R$ ${dollarRate.toFixed(2)}` : "Carregando cotação do dólar..."}</p>
-      {currentDateTime && <small>{currentDateTime}</small>}
-      <div>
-        <h4>Ações mais negociadas hoje:</h4>
-        <ul>
+      {currentDateTime && <p><strong>{currentDateTime}</strong></p>}
+      <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "10px" }}>
+        <thead>
+          <tr style={{ backgroundColor: "#D8BFD8", color: "#333" }}>
+            <th style={{ padding: "10px", border: "1px solid #ccc" }}>Informação</th>
+            <th style={{ padding: "10px", border: "1px solid #ccc" }}>Detalhes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style={{ backgroundColor: "#F3E5F5" }}>
+            <td colSpan={2} style={{ textAlign: "center", padding: "10px", border: "1px solid #ccc" }}>
+              {dollarRate !== null ? `Dólar: R$ ${dollarRate.toFixed(2)}` : "Carregando cotação do dólar..."}
+            </td>
+          </tr>
           {mostTradedStocks.length > 0 ? (
             mostTradedStocks.map((stock, index) => (
-              <li key={index}>
-                {stock.name}: {stock.volume.toLocaleString()} negociações
-              </li>
+              <tr key={index} style={{ backgroundColor: index % 2 === 0 ? "#EDE7F6" : "#FFF" }}>
+                <td style={{ padding: "10px", border: "1px solid #ccc" }}>{stock.name}</td>
+                <td style={{ padding: "10px", border: "1px solid #ccc" }}>{stock.volume.toLocaleString()} negociações</td>
+              </tr>
             ))
           ) : (
-            <p>Carregando ações...</p>
+            <tr>
+              <td colSpan={2} style={{ textAlign: "center", padding: "10px", border: "1px solid #ccc" }}>
+                Carregando ações mais negociadas...
+              </td>
+            </tr>
           )}
-        </ul>
-      </div>
+        </tbody>
+      </table>
     </S.ButtonCotacao>
   );
 };
 
 export default ButtonDollar;
+
