@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import * as S from "./styles";
 import ChatGemini from "../components/chat-gemini/ChatGemini";
 import { auth } from "../services/firebase";
