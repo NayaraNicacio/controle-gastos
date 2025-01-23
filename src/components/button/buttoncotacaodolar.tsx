@@ -1,5 +1,5 @@
 import { CotacaoDollar } from "../../services/CotacaoDollar";
-import { getMostTradedStocks } from "../../services/B3Service";
+import { getMostTradedStocks } from "../../services/B3Services";
 import * as S from "./button-styles";
 import { useEffect, useState } from "react";
 
@@ -25,7 +25,6 @@ const ButtonDollar = () => {
   return (
     <S.ButtonCotacao bgColor="#9370DB">
       <div style={{ textAlign: "center", color: "#FFF" }}>
-        <h4>Ações mais negociadas:</h4>
         {mostTradedStocks.length > 0 ? (
           <table style={{ width: "100%", color: "#FFF", borderCollapse: "collapse" }}>
             <thead>
