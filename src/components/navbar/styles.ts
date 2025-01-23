@@ -91,3 +91,48 @@ export const LogintButton = styled.button`
     color: #d02090;
   }
 `;
+export const CardsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap; /* Permite que os cards se reorganizem para baixo em telas menores */
+
+  /* Alinhamento de cards na linha */
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+interface CardProps {
+  bgColor: string;
+}
+
+export const Card = styled.div<CardProps>`
+  background-color: ${(props) =>
+    props.bgColor || "#fff"}; /* Usando interpolação corretamente */
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 200px;
+  text-align: center;
+  margin: 1rem;
+  height: 80px;
+  font-size: 1.2rem;
+
+  p {
+    margin: 5px 0;
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    min-width: 150px;
+    height: auto;
+  }
+`;

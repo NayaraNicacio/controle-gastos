@@ -5,6 +5,9 @@ import { auth } from "../../services/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import * as S from "./styles";
 import { FiLogOut } from "react-icons/fi";
+import  ButtonDollar  from "../button/buttoncotacaodolar";
+
+
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -37,7 +40,8 @@ const Navbar = () => {
       {user && <NavLink to="/">Home</NavLink>}
       {user && <NavLink to="/criar-despesas">Criar Despesas</NavLink>}
       {user && <NavLink to="/dashboard">Dashboard</NavLink>}
-
+      <ButtonDollar/> 
+        
       {user ? (
         <S.ProfileContainer>
           <S.UserImage src={user.photoURL} alt="Foto de perfil" />

@@ -5,7 +5,7 @@ import ChatGemini from "../components/chat-gemini/ChatGemini";
 import { auth } from "../services/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import http from "../http";
-import { CotacaoDollar } from './../services/CotacaoDollar';
+
 
 type Despesa = {
   id: number;
@@ -20,32 +20,6 @@ type Despesa = {
 const Dashboard = () => {
   const [despesas, setDespesas] = useState([] as Despesa[]);
   const [user] = useAuthState(auth); 
-
-  const [dollarRate, setDollarRate] = useState<number | null>(null);
-
-  const dollarRateService = new CotacaoDollar();
-
-  const [currentDateTime, setCurrentDateTime] = useState<string>("");
-
-
-  useEffect(() => {
-    const fetchDollarRate = async () => {
-      try {
-        const rate = await dollarRateService.getDollarRate();
-        setDollarRate(rate);
-        const now = new Date();
-        const formattedDateTime = now.toLocaleString("pt-BR", {
-          dateStyle: "short",
-          timeStyle: "short",
-        });
-        setCurrentDateTime(formattedDateTime);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchDollarRate();
-  }, []);
 
   useEffect(() => {
     const fetchDespesas = async () => {
@@ -94,12 +68,6 @@ const Dashboard = () => {
           <p>Saldo</p>
           <p>R$ {saldo.toFixed(2)}</p>
         </S.Card>
-
-        <S.Card bgColor="#EE82EE">
-        <h1>Dólar Hoje</h1>
-        <p>{dollarRate !== null ? `R$ ${dollarRate.toFixed(2)}` : "Carregando..."}</p>
-        <small>{currentDateTime}</small>
-        </S.Card> 
       </S.CardsContainer>
 
       {/* Tabela com os dados das despesas */}
