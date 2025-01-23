@@ -44,7 +44,7 @@ const ButtonDollar = () => {
   }, []);
 
   return (
-    <S.ButtonCotacao bgColor="#9370DB">
+    <S.ButtonCotacao bgColor="#DA70D6">
       <div style={{ textAlign: "center", color: "#FFF" }}>
         <p><strong>{currentDateTime}</strong></p>
         <p>

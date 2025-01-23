@@ -6,8 +6,8 @@ export const ButtonCotacao = styled.button<{ bgColor: string }>`
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
-  cursor: pointer;
   font-size: 16px;
+  
 
   p {
     margin: 0;
