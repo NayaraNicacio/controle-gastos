@@ -5,7 +5,7 @@ import { auth } from "../../services/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import * as S from "./styles";
 import { FiLogOut } from "react-icons/fi";
-import  ButtonDollar  from "../button/buttoncotacaodolar";
+import  ButtonDollar  from "../button/ButtonDollar";
 
 
 
