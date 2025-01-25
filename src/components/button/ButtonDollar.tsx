@@ -10,23 +10,18 @@ const ButtonDollar = () => {
 
   const dollarRateService = new CotacaoDollar();
 
-  const getOrdinal = (n: number) => {
-    const suffixes = ["th", "st", "nd", "rd"];
-    const value = n % 100;
-    return n + (suffixes[(value - 20) % 10] || suffixes[value] || suffixes[0]);
+  const getColorByPosition = (position: number) => {
+    const colors = ["#FFD700", "#C0C0C0", "#CD7F32"]; // Ouro, prata e bronze
+    return colors[position] || "#4CAF50"; // Verde para os demais
   };
 
   useEffect(() => {
     const fetchFinancialData = async () => {
       try {
-        // Busca a cotação do dólar
         const rate = await dollarRateService.getDollarRate();
         setDollarRate(rate);
 
-        // Busca as ações mais negociadas
         const stocks = await getMostTradedStocks();
-        
-        // Ordena as ações por volume negociado em ordem decrescente
         const sortedStocks = stocks.sort((a, b) => b.volume - a.volume);
         setMostTradedStocks(sortedStocks);
       } catch (error) {
@@ -34,7 +29,6 @@ const ButtonDollar = () => {
       }
     };
 
-    // Atualiza a hora
     const updateDateTime = () => {
       const now = new Date();
       const formattedDateTime = now.toLocaleString("pt-BR", {
@@ -46,47 +40,39 @@ const ButtonDollar = () => {
 
     fetchFinancialData();
     updateDateTime();
-    const intervalId = setInterval(updateDateTime, 1000); // Atualiza a cada segundo
+    const intervalId = setInterval(updateDateTime, 1000);
 
-    return () => clearInterval(intervalId); // Limpa o intervalo ao desmontar
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
     <div>
+      <S.TableContainer>
       {currentDateTime && dollarRate !== null && (
         <div>
-           <S.TableTitleH3>Dólar Hoje: R$ {dollarRate.toFixed(2)}</S.TableTitleH3>
-          <S.TableContainer>
-            <S.TableTitle>Principais Ações Negociadas</S.TableTitle>
-            <S.StyledTable>
-              <thead>
-                <tr>
-                  <S.ThTd>Posição</S.ThTd>
-                  <S.ThTd>Ações</S.ThTd>
-                  <S.ThTd>Volume</S.ThTd>
-                </tr>
-              </thead>
-              <tbody>
-                {mostTradedStocks.length > 0 ? (
-                  mostTradedStocks.map((stock, index) => (
-                    <tr key={index}>
-                      <S.Td>{getOrdinal(index + 1)}</S.Td> {/* Número ordinal */}
-                      <S.Td>{stock.name}</S.Td>
-                      <S.Td>{stock.volume.toLocaleString()}</S.Td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan={3} className="loading">
-                      Carregando ações...
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </S.StyledTable>
-          </S.TableContainer>
+         
+          
+            <div>
+              
+              <S.TableTitle>Principais Volumes de Ações Negociadas no IBOVESPA</S.TableTitle>
+              <S.DollarTag>Dólar Hoje: R$ {dollarRate.toFixed(2)}</S.DollarTag>
+              
+              {mostTradedStocks.length > 0 ? (
+                mostTradedStocks.map((stock, index) => (
+                  <S.StockItem key={index}>
+                    <S.OrdinalTag color={getColorByPosition(index)}>{index + 1}º</S.OrdinalTag>
+                    <S.StockName>{stock.name}</S.StockName>
+                    <S.StockVolume>{stock.volume.toLocaleString()}</S.StockVolume>
+                  </S.StockItem>
+                ))
+              ) : (
+                <p>Carregando ações...</p>
+              )}
+            </div>
+         
         </div>
       )}
+      </S.TableContainer>
     </div>
   );
 };
