@@ -53,16 +53,18 @@ const ButtonDollar = () => {
          
           
             <div>
-              
-              <S.TableTitle>Principais Volumes de Ações Negociadas no IBOVESPA</S.TableTitle>
+            <S.TableTitle>Ações Mais Negociadas do Dia</S.TableTitle>
               <S.DollarTag>Dólar Hoje: R$ {dollarRate.toFixed(2)}</S.DollarTag>
               
               {mostTradedStocks.length > 0 ? (
+                
                 mostTradedStocks.map((stock, index) => (
+                
                   <S.StockItem key={index}>
-                    <S.OrdinalTag color={getColorByPosition(index)}>{index + 1}º</S.OrdinalTag>
+                    <S.OrdinalTag color={getColorByPosition(index)}>{index + 1}º </S.OrdinalTag>
+                    
                     <S.StockName>{stock.name}</S.StockName>
-                    <S.StockVolume>{stock.volume.toLocaleString()}</S.StockVolume>
+                    <S.StockVolume> {stock.volume.toLocaleString()}</S.StockVolume>
                   </S.StockItem>
                 ))
               ) : (

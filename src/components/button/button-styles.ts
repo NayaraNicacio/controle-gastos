@@ -17,11 +17,11 @@ export const TableContainer = styled.div`
 `;
 
 export const TableTitle = styled.p`
-  text-align: left;
-  font-size: 16px;
+  text-align: lefth;
+  font-size: 13px;
   font-weight: 400;
   color: #fff;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 `;
 
 export const StockItem = styled.div`
